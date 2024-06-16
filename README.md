@@ -143,7 +143,7 @@ class SavingsAccount(BankAccount):
 savings_account = SavingsAccount("123456", 1000, 5)
 savings_account.calculate_interest()  # Output: Calculated interest: $65.0
 ```
-### -> Below mentioned concepts are not fundamental OOP principles but are design principles related to how classes can relate to one another:
+### >>> Below mentioned concepts are not fundamental OOP principles but are design principles related to how classes can relate to one another:
 
 ## Composition
 Composition is a design principle in which one class is composed of one or more objects from other classes, meaning that the composed class has objects of other classes as attributes.
