@@ -1,4 +1,3 @@
-```markdown
 # OOP with Python
 
 Object-oriented programming (OOP) is a programming paradigm that uses objects and classes in programming. It aims to implement real-world entities like inheritance, polymorphism, encapsulation, etc. in programming. The main aim of OOP is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function.
@@ -50,7 +49,6 @@ print(my_car.wheels)  # Output: 4
 my_car.drive()  # Output: The Toyota Camry is driving.
 my_car.stop()  # Output: The Toyota Camry has stopped.
 ```
-
 ## Inheritance
 Inheritance is a mechanism in which one class acquires the properties and behavior of another class.
 
