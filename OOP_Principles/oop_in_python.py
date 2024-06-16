@@ -310,3 +310,31 @@ class Taxi:
 driver = Driver("Alice")
 taxi = Taxi(driver)
 taxi.display() # Output: Driver: Alice
+
+#-------------------------- Dependency --------------------------------
+# Dependency is a design principle in OOP that models a uses-a relationship. It is a more temporary form of relationship where objects depend on each other for a short period of time.
+# In dependency, the objects that are part of the other object cannot exist independently. If the parent object is destroyed, the child objects cannot continue to exist.
+# In the following example, the Car class depends on the Engine class. The Car class has an engine attribute that is an instance of the Engine class.
+
+class Engine:
+    def start(self):
+        print("Engine started")
+
+    def stop(self):
+        print("Engine stopped")
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+
+    def start(self):
+        print("Car starting")
+        self.engine.start()
+
+    def stop(self):
+        print("Car stopping")
+        self.engine.stop()
+
+car = Car()
+car.start()  # Output: Car starting, Engine started
+car.stop()  # Output: Car stopping, Engine stopped
