@@ -50,7 +50,8 @@ my_car.drive()  # Output: The Toyota Camry is driving.
 my_car.stop()  # Output: The Toyota Camry has stopped.
 ```
 ## Inheritance
-Inheritance is a mechanism in which one class acquires the properties and behavior of another class.
+Inheritance is a mechanism in which one class acquires the properties and behavior of another class. The super() method is used to call the constructor of the parent class (superclass). It is used to call the constructor of the superclass and to access all the methods and attributes of the superclass.  In the following example, the ElectricCar class inherits from the Car class. The ElectricCar class has an additional attribute battery_capacity and a method charge().
+
 
 ```python
 # Inheritance using super() method
@@ -71,7 +72,7 @@ my_electric_car.charge()  # Output: The Tesla Model S is charging.
 ```
 
 ## Polymorphism
-Polymorphism means having many forms. In Python, polymorphism allows us to define methods in the child class with the same name as defined in their parent class. This is known as method overriding.
+Polymorphism means having many forms. In Python, polymorphism allows us to define methods in the child class with the same name as defined in their parent class. This is known as method overriding. When a method in a subclass has the same name, same parameters or signature, and same return type as a method in its superclass, then the method in the subclass is said to override the method in the superclass. In below example, the speak() method is overridden in the Dog and Cat classes.
 
 ```python
 class Animal:
@@ -96,7 +97,7 @@ for animal in animals:
 ```
 
 ## Encapsulation
-Encapsulation is the bundling of data (attributes) and methods into a single unit or class. It restricts direct access to some of an object's components, which prevents the "accidental modification" of data.
+Encapsulation is the bundling of data (attributes) and methods into a single unit or class. It restricts direct access to some of an object's components, which prevents the "accidental modification" of data.  In Python, we can denote private attributes and methods by prefixing the attribute or method name with double underscores __. This makes the attribute or method private, and it cannot be accessed directly from outside the class. We can define getter and setter methods to access and modify the private attributes. In the following example, the Person class has private attributes _name and _age. We have defined getter and setter methods to access and modify these attributes.
 
 ```python
 class Person:
@@ -126,27 +127,55 @@ person.display()  # Output: Name: Bob, Age: 30
 ```
 
 ## Abstraction
-Abstraction is the concept of hiding the complex implementation details and showing only the necessary features of an object. It helps in reducing programming complexity and effort.
+Abstraction is the concept of hiding the complex implementation details and showing only the necessary features of an object. It helps in reducing programming complexity and effort. In Python, we can create abstract classes using the abc module. Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation. In the following example, the Device class is an abstract class with two abstract methods turn_on() and turn_off(). The Laptop and Smartphone classes inherit from the Device class and implement the abstract methods.
 
 ```python
-from bank_account import BankAccount
+from abc import ABC, abstractmethod
 
-class SavingsAccount(BankAccount):
-    def __init__(self, account_number, initial_balance, interest_rate):
-        super().__init__(account_number, initial_balance)
-        self.interest_rate = interest_rate
+class Device(ABC):
+    def __init__(self, brand, modle):
+        self.brand = brand
+        self.model = model
 
-    def calculate_interest(self):
-        interest = self.balance * self.interest_rate / 100
-        print(f"Calculated interest: ${interest}")
+    @abstractmethod # @ stands for decorator
+    def turn_on(self):
+        pass
 
-savings_account = SavingsAccount("123456", 1000, 5)
-savings_account.calculate_interest()  # Output: Calculated interest: $65.0
+    @abstractmethod
+    def turn_off(self):
+        pass
+    
+    def display_model(self):
+        print(f"{self.brand} {self.model}")
+    
+class Laptop(Device):
+    def turn_on(self):
+        print(f"{self.brand} {self.model} is turning on")
+
+    def turn_off(self):
+        print(f"{self.brand} {self.model} is turning off")
+
+class Smartphone(Device):
+    def turn_on(self):
+        print(f"{self.brand} {self.model} is turning on")
+
+    def turn_off(self):
+        print(f"{self.brand} {self.model} is turning off")
+
+laptop = Laptop("Dell", "Inspiron")
+laptop.display_model()  # Output: Dell Inspiron
+laptop.turn_on()  # Output: Dell Inspiron is turning on
+laptop.turn_off()  # Output: Dell Inspiron is turning off
+
+smartphone = Smartphone("Apple", "iPhone 12")
+smartphone.display_model()  # Output: Apple iPhone 12
+smartphone.turn_on()  # Output: Apple iPhone 12 is turning on
+smartphone.turn_off()  # Output: Apple iPhone 12 is turning off
 ```
 ### >>> Below mentioned concepts are not fundamental OOP principles but are design principles related to how classes can relate to one another:
 
 ## Composition
-Composition is a design principle in which one class is composed of one or more objects from other classes, meaning that the composed class has objects of other classes as attributes.
+Composition is a design principle in which one class is composed of one or more objects from other classes, meaning that the composed class has objects of other classes as attributes. In the following example, the Engine class is composed within the Bike class. The Bike class has an engine attribute that is an instance of the Engine class
 
 ```python
 class Engine:
@@ -174,7 +203,7 @@ bike.stop()  # Output: Bike stopping, Engine stopped
 ```
 
 ## Aggregation
-Aggregation is a special form of association where one class is a part of another class, but both can exist independently.
+Aggregation is a special form of association where one class is a part of another class, but both can exist independently. In the following example, the Wheel class is aggregated within the Rickshaw class. The Rickshaw class has a list of Wheel objects.
 
 ```python
 class Wheel:
@@ -202,7 +231,7 @@ rickshaw.display()  # Output: Wheel diameter: 20, Wheel diameter: 10, Wheel diam
 ```
 
 ## Association
-Association defines a relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf.
+Association defines a relationship between classes of objects that allows one object instance to cause another to perform an action on its behalf. In the following example, the Driver class is associated with the Taxi class. The Taxi class has a driver attribute that is an instance of the Driver class.
 
 ```python
 class Driver:
