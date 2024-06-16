@@ -105,3 +105,30 @@ my_electric_car.charge()  # Output: The Tesla Model S is charging.
 
 my_colored_car = ColoredCar("BMW", "X5", "Red")
 my_colored_car.display()  # Output: The BMW X5 is Red in color
+
+#-------------------------- Polymorphism --------------------------------
+# Ploymorphism means having many forms. In Python, polymorphism allows us to define methods in the child class with the same name as defined in their parent class. This is known as method overriding.
+# Ploymporphism using method overriding
+# Method overriding is a feature that allows a subclass to provide a specific implementation of a method that is already provided by its superclass.
+# When a method in a subclass has the same name, same parameters or signature, and same return type as a method in its superclass, then the method in the subclass is said to override the method in the superclass.
+# In below example, the speak() method is overridden in the Dog and Cat classes.
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+animals = [Dog("Buddy"), Cat("Misty"), Dog("Max")]
+
+for animal in animals:
+    print(animal.speak())
