@@ -178,3 +178,52 @@ person.display()  # Output: Name: Charlie, Age: 25
 person.age = 45  # This will not change the age attribute
 person._age = 45 # This will change the age attribute but it's not recommended
 person.display()  # Output: Name: Charlie, Age: 45
+
+#-------------------------- Abstraction --------------------------------
+# Abstraction is the concept of hiding the complex implementation details and showing only the necessary features of an object. It helps in reducing programming complexity and effort.
+# Abstraction using abstract classes and methods
+# In Python, we can create abstract classes using the abc module. Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation.
+# Abstract classes cannot be instantiated, and their abstract methods must be implemented by their subclasses.
+# In the following example, the Device class is an abstract class with two abstract methods turn_on() and turn_off(). The Laptop and Smartphone classes inherit from the Device class and implement the abstract methods.
+
+from abc import ABC, abstractmethod
+
+class Device(ABC):
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    @abstractmethod # @ stands for decorator
+    def turn_on(self):
+        pass
+
+    @abstractmethod
+    def turn_off(self):
+        pass
+    
+    def display_model(self):
+        print(f"{self.brand} {self.model}")
+    
+class Laptop(Device):
+    def turn_on(self):
+        print(f"{self.brand} {self.model} is turning on")
+
+    def turn_off(self):
+        print(f"{self.brand} {self.model} is turning off")
+
+class Smartphone(Device):
+    def turn_on(self):
+        print(f"{self.brand} {self.model} is turning on")
+
+    def turn_off(self):
+        print(f"{self.brand} {self.model} is turning off")
+
+laptop = Laptop("Dell", "Inspiron")
+laptop.display_model()  # Output: Dell Inspiron
+laptop.turn_on()  # Output: Dell Inspiron is turning on
+laptop.turn_off()  # Output: Dell Inspiron is turning off
+
+smartphone = Smartphone("Apple", "iPhone 12")
+smartphone.display_model()  # Output: Apple iPhone 12
+smartphone.turn_on()  # Output: Apple iPhone 12 is turning on
+smartphone.turn_off()  # Output: Apple iPhone 12 is turning off
