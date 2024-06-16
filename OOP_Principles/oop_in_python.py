@@ -62,3 +62,46 @@ print(new_account.get_balance()) # Output: 500
 new_account.deposit(100) # Output: Deposited $100. New balance: $600
 new_account.withdraw(50) # Output: Withdrew $50. New balance: $550
 print(new_account.get_balance()) # Output: 550
+
+#-------------------------- Inheritance --------------------------------
+# Inheritance is a mechanism in which one class acquires the properties and behavior of another class.
+# Inheritance using super() method
+# The super() method is used to call the constructor of the parent class (superclass). It is used to call the constructor of the superclass and to access all the methods and attributes of the superclass.
+# In the following example, the ElectricCar class inherits from the Car class. The ElectricCar class has an additional attribute battery_capacity and a method charge().
+
+class ElectricCar(Car):
+    def __init__(self, make, model, battery_capacity):
+        super().__init__(make, model)
+        self.battery_capacity = battery_capacity
+
+    def charge(self):
+        print(f"The {self.make} {self.model} is charging.")
+
+class ColoredCar(Car):
+    def __init__(self, make, model, color):
+        super().__init__(make, model)
+        self.color = color
+
+    def display(self):
+        print(f"The {self.make} {self.model} is {self.color} in color")
+
+# Create an instance of the ElectricCar class
+my_electric_car = ElectricCar("Tesla", "Model S", 100)
+
+# Access inherited attributes
+print(my_electric_car.make)  # Output: Tesla
+print(my_electric_car.model)  # Output: Model S
+print(my_electric_car.wheels)  # Output: 4
+
+# Access subclass attribute
+print(my_electric_car.battery_capacity)  # Output: 100
+
+# Call inherited methods
+my_electric_car.drive()  # Output: The Tesla Model S is driving.
+my_electric_car.stop()  # Output: The Tesla Model S has stopped.
+
+# Call subclass method
+my_electric_car.charge()  # Output: The Tesla Model S is charging.
+
+my_colored_car = ColoredCar("BMW", "X5", "Red")
+my_colored_car.display()  # Output: The BMW X5 is Red in color
