@@ -23,3 +23,24 @@ class Car:
     def stop(self):
         print(f"The {self.make} {self.model} has stopped.")
 
+###################### Create an instance of the Car class #####################
+my_car = Car("Toyota", "Camry")
+
+# Access instance attributes
+print(my_car.make)  # Output: Toyota
+print(my_car.model)  # Output: Camry
+
+# Access class attribute
+print(my_car.wheels)  # Output: 4
+
+# Call instance methods
+my_car.drive()  # Output: The Toyota Camry is driving.
+my_car.stop()  # Output: The Toyota Camry has stopped.
+
+# Modify instance attribute
+my_car.make = "Honda"
+print(my_car.make)  # Output: Honda
+
+# Modify class attribute
+Car.wheels = 6
+print(my_car.wheels)  # Output: 6
