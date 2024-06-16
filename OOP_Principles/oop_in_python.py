@@ -132,3 +132,49 @@ animals = [Dog("Buddy"), Cat("Misty"), Dog("Max")]
 
 for animal in animals:
     print(animal.speak())
+
+#-------------------------- Encapsulation --------------------------------
+# Encapsulation is the bundling of data (attributes) and methods into a single unit or class. It restricts direct access to some of an object's components, which prevents the "accidental modification" of data.
+# Encapsulation using private attributes and methods
+# In Python, we can denote private attributes and methods by prefixing the attribute or method name with double underscores __. This makes the attribute or method private, and it cannot be accessed directly from outside the class.
+# We can define getter and setter methods to access and modify the private attributes.
+# In the following example, the Person class has private attributes _name and _age. We have defined getter and setter methods to access and modify these attributes.
+
+
+class Person:
+    def __init__(self, name, age):
+        self._name = name # protected attribute. notice the underscore
+        self._age = age # protected attribute. notice the underscore
+
+    def display(self):
+        print(f"Name: {self._name}, Age: {self._age}")
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+person = Person("Alice", 30)
+person.display()  # Output: Name: Alice, Age: 30
+# Recommended way to access and modify private attributes
+print(person.get_name())  # Output: Alice
+person.set_name("Bob")
+person.display()  # Output: Name: Bob, Age: 30
+print(person.get_age()) # Output: 30
+person.set_age(25)
+person.display()  # Output: Name: Bob, Age: 25
+
+person.name = "Charlie"  # This will not change the name attribute
+person._name = "Charlie"  # This will change the name attribute but it's not recommended
+person.display()  # Output: Name: Charlie, Age: 25
+
+person.age = 45  # This will not change the age attribute
+person._age = 45 # This will change the age attribute but it's not recommended
+person.display()  # Output: Name: Charlie, Age: 45
