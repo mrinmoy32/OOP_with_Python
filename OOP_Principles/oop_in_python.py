@@ -287,3 +287,26 @@ wheels = [wheel1, wheel2, wheel3, wheel4]
 
 rickshaw = Rickshaw(wheels)
 rickshaw.display() # Output: Wheel diameter: 20, Wheel diameter: 10, Wheel diameter: 25, Wheel diameter: 45
+
+#-------------------------- Association --------------------------------
+# Association is a design principle in OOP that models a has-a relationship. It is a more general form of relationship where objects have a reference to another object.
+# In association, the objects that are part of the other object can exist independently. If the parent object is destroyed, the child objects can continue to exist.
+# In the following example, the Driver class is associated with the Taxi class. The Taxi class has a driver attribute that is an instance of the Driver class.
+
+class Driver:
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print(f"Driver: {self.name}")
+
+class Taxi:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def display(self):
+        self.driver.display()
+    
+driver = Driver("Alice")
+taxi = Taxi(driver)
+taxi.display() # Output: Driver: Alice
