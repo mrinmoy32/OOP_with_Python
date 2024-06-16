@@ -44,3 +44,12 @@ print(my_car.make)  # Output: Honda
 # Modify class attribute
 Car.wheels = 6
 print(my_car.wheels)  # Output: 6
+
+##################### Create another instance of the Car class ##################
+another_car = Car("Ford", "Fusion")
+
+# Access class attribute
+print(another_car.wheels)  # Output: 6
+
+# Call instance methods
+another_car.drive()  # Output: The Ford Fusion is driving.
