@@ -53,3 +53,12 @@ print(another_car.wheels)  # Output: 6
 
 # Call instance methods
 another_car.drive()  # Output: The Ford Fusion is driving.
+
+################## Importing the BankAccount class from bank_account.py ##################
+from bank_account import BankAccount
+
+new_account = BankAccount("987654321", 500)
+print(new_account.get_balance()) # Output: 500
+new_account.deposit(100) # Output: Deposited $100. New balance: $600
+new_account.withdraw(50) # Output: Withdrew $50. New balance: $550
+print(new_account.get_balance()) # Output: 550
