@@ -257,3 +257,33 @@ class Bike:
 bike = Bike()
 bike.start()  # Output: Bike starting, Engine started
 bike.stop()  # Output: Bike stopping, Engine stopped
+
+#-------------------------- Aggregation --------------------------------
+# Aggregation is a design principle in OOP that models a has-a relationship. It is a more specialized form of association where objects have a reference to another object, but the objects can exist independently.
+# In aggregation, the child objects can exist independently of the parent object. If the parent object is destroyed, the child objects can continue to exist.
+# In the following example, the Wheel class is aggregated within the Rickshaw class. The Rickshaw class has a list of Wheel objects.
+
+class Wheel:
+    def __init__(self, diameter):
+        self.diameter = diameter
+    
+    def display(self):
+        print(f"Wheel diameter: {self.diameter}")
+    
+class Rickshaw:
+    def __init__(self, wheels):
+        self.wheels = wheels
+
+    def display(self):
+        for wheel in self.wheels:
+            wheel.display()
+    
+wheel1 = Wheel(20)
+wheel2 = Wheel(10)
+wheel3 = Wheel(25)
+wheel4 = Wheel(45)
+
+wheels = [wheel1, wheel2, wheel3, wheel4]
+
+rickshaw = Rickshaw(wheels)
+rickshaw.display() # Output: Wheel diameter: 20, Wheel diameter: 10, Wheel diameter: 25, Wheel diameter: 45
