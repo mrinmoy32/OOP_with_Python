@@ -227,3 +227,33 @@ smartphone = Smartphone("Apple", "iPhone 12")
 smartphone.display_model()  # Output: Apple iPhone 12
 smartphone.turn_on()  # Output: Apple iPhone 12 is turning on
 smartphone.turn_off()  # Output: Apple iPhone 12 is turning off
+
+# Below are some design principles that are not part of the four pillars of OOP but are important in OOP as design principles.
+
+#-------------------------- Composition --------------------------------
+# Composition is a design principle in OOP that models a has-a relationship. It enables creating complex types by combining objects of other types.
+# In composition, the objects that are part of the other object can exist independently. If the parent object is destroyed, the child objects can continue to exist.
+# In the following example, the Engine class is composed within the Bike class. The Bike class has an engine attribute that is an instance of the Engine class. 
+
+class Engine:
+    def start(self):
+        print("Engine started")
+
+    def stop(self):
+        print("Engine stopped")
+    
+class Bike:
+    def __init__(self):
+        self.engine = Engine()
+
+    def start(self):
+        print("Bike starting")
+        self.engine.start()
+
+    def stop(self):
+        print("Bike stopping")
+        self.engine.stop()
+
+bike = Bike()
+bike.start()  # Output: Bike starting, Engine started
+bike.stop()  # Output: Bike stopping, Engine stopped
