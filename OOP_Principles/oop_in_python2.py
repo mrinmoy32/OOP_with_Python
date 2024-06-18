@@ -98,3 +98,34 @@ c1.feature4() # Feature 4 is working (C's own)
 # The MRO is determined by the order in which the base classes are defined in the class definition.
 
 print(C.__mro__) # (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+
+#---------------------Method Chainig--------------------------------------------
+# Method chaining is a technique where multiple methods can be called in a single line.
+# This is achieved by making the methods return self.
+# This is also known as fluent interface or cascading.
+
+class Calculator:
+    def __init__(self, value=0):
+        self.value = value
+
+    def add(self, num):
+        self.value += num
+        return self
+
+    def subtract(self, num):
+        self.value -= num
+        return self
+
+    def multiply(self, num):
+        self.value *= num
+        return self
+
+    def divide(self, num):
+        self.value /= num
+        return self
+
+    def display(self):
+        print(f"Value: {self.value}")
+
+calc = Calculator(10) # value = 10
+calc.add(5).subtract(3).multiply(2).divide(4).display() # Value: 6.0
