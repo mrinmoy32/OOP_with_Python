@@ -87,3 +87,14 @@ c1.feature1() # Feature 1 is working (inherited from A)
 c1.feature2() # Feature 2 is working (inherited from A)
 c1.feature3() # Feature 3 is working (inherited from B)
 c1.feature4() # Feature 4 is working (C's own)
+
+# -----------------Method Resolution Order (MRO)---------------------------------
+
+# MRO is the order in which Python looks for a method in a hierarchy of classes.
+# It is also known as C3 Linearization.
+# Python uses the C3 linearization algorithm to determine the MRO.
+# The MRO of a class can be viewed using the __mro__ attribute.
+# The __mro__ attribute is a tuple that defines the method resolution order for a class.
+# The MRO is determined by the order in which the base classes are defined in the class definition.
+
+print(C.__mro__) # (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
