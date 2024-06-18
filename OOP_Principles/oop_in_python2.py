@@ -131,3 +131,34 @@ calc = Calculator(10) # value = 10
 calc.add(5).subtract(3).multiply(2).divide(4).display() # Value: 6.0
 
 #### Method Overriding is already demonstrated in "Polymorphism" in previous file: oop_in_python.py #######
+
+# ---------------------Duck Typing--------------------------------------------
+# Duck typing is a concept in programming that focuses on the behavior of an object rather than its type.
+# an object walks like a duck and quacks like a duck, then we can consider it as a duck, regardless of its actual type..
+# In Python, this means that an object can be used in place of another object if it provides the same behavior.
+# This is different from static typing, where the type of an object is explicitly defined.
+# In below example, Duck, Dog, and Cat classes have a walk method. The myfunc function takes an animal object and calls the walk method on it.
+# Since all three classes have a walk method, they can be used interchangeably in the myfunc function.
+
+class Duck:
+    def walk(self):
+        print("Duck is walking")
+
+class Dog:
+    def walk(self):
+        print("Dog is walking")
+
+class Cat:
+    def walk(self):
+        print("Cat is walking")
+
+def myfunc(animal):
+    animal.walk()
+
+duck = Duck()
+dog = Dog()
+cat = Cat()
+
+myfunc(duck) # Duck is walking
+myfunc(dog) # Dog is walking
+myfunc(cat) # Cat is walking
